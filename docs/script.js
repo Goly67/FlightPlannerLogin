@@ -28,24 +28,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log("Correct Username:", correctUsername);
                 console.log("Correct Password:", correctPassword);
 
-                if (username === correctUsername && password === correctPassword) {
-                    // Store login status and expiration time in localStorage
-                    const expirationDate = new Date().getTime() + expirationTime;
-                    const loginData = {
-                        loggedIn: true,
-                        expiration: expirationDate
-                    };
-                    localStorage.setItem('loginData', JSON.stringify(loginData));
+                if (username === correctUsername && passwordHash === correctPasswordHash) {
+    message.textContent = 'Login successful!';
+    message.style.color = 'green';
 
-                    message.textContent = 'Login successful!';
-                    message.style.color = 'green';
+    // Store a login token in localStorage
+    localStorage.setItem('isLoggedIn', 'true');
 
-                    // Redirect to the flight planning website after 1 second
-                    setTimeout(() => {
-                        window.location.href = 'https://goly67.github.io/FlightPlanning/';
-                    }, 1000);
-                } else {
-                    errorMessage.textContent = `Incorrect username or password.`;
-                }
-            });
-        });
+    setTimeout(() => {
+        window.location.href = 'https://goly67.github.io/FlightPlanning/';
+    }, 1000);
+}
