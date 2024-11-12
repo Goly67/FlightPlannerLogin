@@ -32,10 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
     message.textContent = 'Login successful!';
     message.style.color = 'green';
 
-    // Store a login token in localStorage
+    // Store a login token with an expiration (e.g., 1 hour from now)
+    const expiryTime = new Date().getTime() + 60 * 60 * 1000; // 1 hour expiration
     localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('loginExpiry', expiryTime);
 
     setTimeout(() => {
         window.location.href = 'https://goly67.github.io/FlightPlanning/';
     }, 1000);
-}
+                }
