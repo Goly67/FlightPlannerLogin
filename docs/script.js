@@ -35,6 +35,10 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = 'https://goly67.github.io/FlightPlanning/';
         } else {
             errorMessage.textContent = "Incorrect username or password.";
+            
+            // Clear the input fields when there is an error
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
         }
     });
 });
