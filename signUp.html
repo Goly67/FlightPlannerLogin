@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="docs/signUp.css" title="" type="text/css" />
+</head>
+<body>
+    <div class="container" id="signupContainer">
+        <h1>Create Account</h1>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="newUsername">Username</label>
+                <input type="text" id="newUsername" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">Password</label>
+                <input type="password" id="newPassword" name="password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div id="signupMessage"></div>
+        <div id="signupErrorMessage" class="error"></div>
+        <div class="signup-link-container">
+            <a href="index.html" class="signup-link">Login here</a>
+        </div>
+        
+    </div>
+
+    <script src="docs/signUp.js" defer></script>
+</body>
+</html>

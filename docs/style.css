@@ -29,8 +29,6 @@ body {
     align-items: center;
     zoom: reset;
     -webkit-text-size-adjust: 100%;
-    -ms-touch-action: pinch-zoom;
-    -webkit-touch-callout: none;
 }
 
 .container {
@@ -38,8 +36,8 @@ body {
     border-radius: 20px;
     padding: 1.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 300px;
+    width: 130%;
+    max-width: 500px;
     backdrop-filter: blur(10px);
     box-sizing: border-box;
 }
@@ -125,6 +123,39 @@ button:active {
     font-size: 0.9rem;
     margin-top: 1rem;
     text-align: center;
+}
+
+.signup-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+    margin-top: 1.5rem; /* Adds spacing from other elements */
+    margin-top: 0.2rem;
+}
+
+.signup-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem; /* Increase font size for better visibility */
+    padding: 0.5rem 12rem; /* Button-like appearance */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-link:hover {
+    text-decoration: none;
+    background-color: rgba(52, 152, 219, 0.1); /* Light background color on hover */
+    color: var(--accent-color); /* Change text color on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+.signup-link:active {
+    transform: translateY(1px); /* Add a subtle effect when clicked */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reset shadow when active */
 }
 
 @media (max-width: 768px) {
