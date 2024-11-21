@@ -130,8 +130,7 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ensure it takes up the full width */
-    margin-top: 1.5rem; /* Adds spacing from other elements */
+    width: 100%;
     margin-top: 0.2rem;
 }
 
@@ -139,8 +138,8 @@ button:active {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem; /* Increase font size for better visibility */
-    padding: 0.5rem 12rem; /* Button-like appearance */
+    font-size: 1.1rem;
+    padding: 0.5rem 11.2rem; /* Adjust padding to fit text properly */
     border-radius: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -148,15 +147,15 @@ button:active {
 
 .signup-link:hover {
     text-decoration: none;
-    background-color: rgba(52, 152, 219, 0.1); /* Light background color on hover */
-    color: var(--accent-color); /* Change text color on hover */
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--accent-color);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .signup-link:active {
-    transform: translateY(1px); /* Add a subtle effect when clicked */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reset shadow when active */
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
