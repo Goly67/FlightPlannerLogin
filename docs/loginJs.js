@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (response.ok) {
                 const data = await response.json(); // Get token and message from server
                 localStorage.setItem('authToken', data.token); // Save token (optional)
+                localStorage.setItem('isLoggedIn', 'true'); // Set login status to true
                 window.location.href = 'https://goly67.github.io/FlightPlanning/'; // Redirect to flight planning page
             } else {
                 const error = await response.json();
