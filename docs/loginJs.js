@@ -1,42 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById('loginForm');
     const errorMessage = document.getElementById('error-message');
 
-    // Handle Login
-    loginForm.addEventListener('submit', function (e) {
-        e.preventDefault(); // Prevent the default form submission
+    loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent default form submission
 
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-        // Retrieve stored username and password from localStorage
-        const storedUsername = localStorage.getItem('username');
-        const storedPassword = localStorage.getItem('password');
+        try {
+            const response = await fetch('https://loginapilogger.glitch.me/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
 
-        // Debugging: Output stored values and entered values
-        console.log('Stored Username:', storedUsername);
-        console.log('Stored Password:', storedPassword);
-        console.log('Entered Username:', username);
-        console.log('Entered Password:', password);
-
-        if (!storedUsername || !storedPassword) {
-            errorMessage.textContent = "No account found. Please register first.";
-            return;
-        }
-
-        if (username === storedUsername && password === storedPassword) {
-            // Successfully logged in
-            localStorage.setItem('isLoggedIn', 'true'); // Persist login state
-            window.location.href = 'https://goly67.github.io/FlightPlanning/';
-        } else {
-            errorMessage.textContent = "Incorrect username or password.";
-        }
-    });
-
-    // Ensure that pressing "Enter" triggers the form submission
-    loginForm.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            loginForm.dispatchEvent(new Event('submit'));
+            if (response.ok) {
+                const data = await response.json(); // Get token and message from server
+                localStorage.setItem('authToken', data.token); // Save token (optional)
+                window.location.href = 'https://goly67.github.io/FlightPlanning/'; // Redirect to flight planning page
+            } else {
+                const error = await response.json();
+                errorMessage.textContent = error.message;
+            }
+        } catch (err) {
+            console.error('Login Error:', err);
+            errorMessage.textContent = "Something went wrong. Please try again.";
         }
     });
 });

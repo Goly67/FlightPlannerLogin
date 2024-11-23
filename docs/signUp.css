@@ -118,13 +118,26 @@ button:active {
     font-size: 0.9rem;
 }
 
-.error {
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+/* Styling for the error message */
+#error-message, #signupErrorMessage {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
     text-align: center;
+    margin-bottom: 1rem;
 }
+
+/* Styling for the success message */
+#signupMessage {
+    color: green;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
 
 .signup-link-container {
     display: flex;
@@ -157,6 +170,8 @@ button:active {
     transform: translateY(1px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+
 
 @media (max-width: 768px) {
     .container {

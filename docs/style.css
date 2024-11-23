@@ -116,16 +116,20 @@ button:active {
     color: var(--accent-color);
     margin-top: 1rem;
     font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-.error {
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    margin-top: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+/* Styling for the error message */
+#error-message, #signupErrorMessage {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
     text-align: center;
+    margin-bottom: 1rem;
 }
+
 
 .signup-link-container {
     display: flex;

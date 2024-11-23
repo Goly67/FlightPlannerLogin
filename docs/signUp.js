@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const signupErrorMessage = document.getElementById('signupErrorMessage');
     const signupMessage = document.getElementById('signupMessage');
 
-    // Handle Sign Up
-    signupForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the default form submission
+    signupForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent default form submission
 
         const newUsername = document.getElementById('newUsername').value;
         const newPassword = document.getElementById('newPassword').value;
@@ -13,22 +12,52 @@ document.addEventListener("DOMContentLoaded", function() {
         // Check if password is at least 12 characters long
         if (newPassword.length < 12) {
             signupErrorMessage.textContent = 'Password must be at least 12 characters long.';
-            return; // Exit if the password is too short
+            return; // Exit if password is too short
         }
 
-        if (newUsername && newPassword) {
-            // Save username and password to localStorage
-            localStorage.setItem('username', newUsername);
-            localStorage.setItem('password', newPassword);
+        // Send a POST request to the sign-up API to register the user
+        try {
+            const signupResponse = await fetch('https://loginapilogger.glitch.me/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: newUsername, password: newPassword })
+            });
 
-            signupMessage.textContent = 'Account created successfully! Redirecting to login page...';
+            // Check if signup was successful
+            if (!signupResponse.ok) {
+                const error = await signupResponse.json();
+                signupErrorMessage.textContent = error.message;
+                return;
+            }
 
-            // Redirect after a short delay
-            setTimeout(function() {
-                window.location.href = 'index.html'; // Redirect to login page
-            }, 2000); // 2 seconds delay for user feedback
-        } else {
-            signupErrorMessage.textContent = 'Please fill in both fields.';
+            // After successful signup, send a login request to the login API
+            const loginResponse = await fetch('https://loginapilogger.glitch.me/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: newUsername, password: newPassword })
+            });
+
+            // If login is successful, store the JWT token
+            if (loginResponse.ok) {
+                const data = await loginResponse.json();
+                console.log(data.message); // Successful login message
+                localStorage.setItem('authToken', data.token); // Save token locally
+
+                // Display success message
+                signupMessage.textContent = 'Account created and logged in successfully! Redirecting...';
+
+                // Redirect after a short delay
+                setTimeout(function() {
+                    window.location.href = 'index.html'; // Redirect to the next page
+                }, 2000); // 2 seconds delay
+            } else {
+                const error = await loginResponse.json();
+                signupErrorMessage.textContent = error.message;
+            }
+
+        } catch (err) {
+            console.error('Error:', err);
+            signupErrorMessage.textContent = 'Something went wrong. Please try again.';
         }
     });
 
