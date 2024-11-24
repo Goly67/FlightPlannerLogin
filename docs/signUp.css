@@ -36,23 +36,25 @@ body {
     border-radius: 20px;
     padding: 1.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 130%;
+    width: 90%; /* Adjust width for smaller screens */
     max-width: 500px;
     backdrop-filter: blur(10px);
     box-sizing: border-box;
+    text-align: center; /* Center align text within the container */
 }
 
 h1 {
     color: var(--secondary-color);
-    text-align: center;
     margin-bottom: 1rem;
     font-size: 1.8rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 0.1rem;
+    white-space: nowrap; /* Prevent wrapping of text */
 }
 
+/* Form styles */
 form {
     display: grid;
     gap: 1rem;
@@ -67,7 +69,9 @@ label {
     font-size: 0.8rem;
     margin-bottom: 0.3rem;
     display: block;
+    text-align: left; /* Align text to the left */
 }
+
 
 input {
     width: 100%;
@@ -116,6 +120,8 @@ button:active {
     color: var(--accent-color);
     margin-top: 1rem;
     font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 /* Styling for the error message */
@@ -128,23 +134,12 @@ button:active {
     margin-bottom: 1rem;
 }
 
-/* Styling for the success message */
-#signupMessage {
-    color: green;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 10px;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-
 .signup-link-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 0.2rem;
+    margin-top: 1rem;
 }
 
 .signup-link {
@@ -152,7 +147,7 @@ button:active {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    padding: 0.5rem 11.2rem; /* Adjust padding to fit text properly */
+    padding: 0.5rem 1.5rem; /* Adjust padding */
     border-radius: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -171,10 +166,34 @@ button:active {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-
+/* Media queries for smaller screens */
 @media (max-width: 768px) {
     .container {
-        max-width: 90%;
+        width: 90%; /* Ensure the container scales properly */
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Reduce font size */
+    }
+
+    .signup-link {
+        font-size: 1rem;
+        padding: 0.3rem 1rem; /* Reduce padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%; /* Take up full width */
+        margin: 0 1rem; /* Add some padding around the edges */
+    }
+
+    h1 {
+        font-size: 1.2rem; /* Further reduce font size for very small screens */
+    }
+
+    button {
+        font-size: 0.9rem; /* Adjust button font size */
     }
 }

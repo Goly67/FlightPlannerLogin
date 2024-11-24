@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 localStorage.setItem('authToken', data.token); // Save token locally
 
                 // Display success message
-                signupMessage.textContent = 'Account created! Redirecting...';
+                signupMessage.textContent = 'Account created successfully! Redirecting...';
 
                 // Redirect after a short delay
                 setTimeout(function() {
