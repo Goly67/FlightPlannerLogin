@@ -117,7 +117,7 @@ button:active {
 
 #signupMessage {
     text-align: center;
-    color: var(--accent-color);
+    color: green;
     margin-top: 1rem;
     font-size: 0.9rem;
     text-align: center;
