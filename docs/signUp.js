@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return; // Exit if password is too short
         }
 
-        // First, check if the username already exists
+        // Check if the username already exists
         try {
             const checkUsernameResponse = await fetch(`https://loginapilogger.glitch.me/check-username?username=${newUsername}`, {
                 method: 'GET',
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!checkUsernameResponse.ok) {
                 const error = await checkUsernameResponse.json();
                 signupErrorMessage.textContent = error.message;
-                return;
+                return; // Exit the function if username already exists
             }
 
             // Send a POST request to the sign-up API to register the user
