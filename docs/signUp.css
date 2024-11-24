@@ -115,7 +115,7 @@ button:active {
     transform: translateY(1px);
 }
 
-#message {
+#signupMessage {
     text-align: center;
     color: var(--accent-color);
     margin-top: 1rem;
